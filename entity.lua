@@ -1,3 +1,5 @@
+-- Copyright 2016 Yat Hin Wong
+
 Class = require "lib.class"
 vector = require "lib.vector"
 
