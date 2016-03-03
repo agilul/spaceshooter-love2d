@@ -1,3 +1,5 @@
+-- Copyright 2016 Yat Hin Wong
+
 vector = require "lib.vector"
 Entity = require "entity"
 steering = require "steering"
