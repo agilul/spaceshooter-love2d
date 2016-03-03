@@ -1,3 +1,5 @@
+-- Copyright 2016 Yat Hin Wong
+
 vector = require "lib.vector"
 
 steering = {}
