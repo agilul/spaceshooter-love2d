@@ -8,7 +8,7 @@ steering = require "steering"
 function love.load()
 	math.randomseed(os.time())
 
-	player = Entity(love.window.getWidth()/2, love.window.getHeight()/2, "assets/playership.png")
+	player = Entity(love.graphics.getWidth()/2, love.graphics.getHeight()/2, "assets/playership.png")
 	lasers = {}
 	bombs = {}
 	enemies = {}
@@ -16,7 +16,7 @@ function love.load()
 	-- repeating background tile
 	background = love.graphics.newImage("assets/black.png")
 	background:setWrap("repeat", "repeat")
-	bgQuad = love.graphics.newQuad(0, 0, love.window.getWidth(), love.window.getHeight(), background:getWidth(), background:getHeight())
+	bgQuad = love.graphics.newQuad(0, 0, love.graphics.getWidth(), love.graphics.getHeight(), background:getWidth(), background:getHeight())
 	
 	weaponInterval = 0
 	weaponRoF = 8
@@ -63,7 +63,7 @@ function love.update(dt)
 	if weaponInterval > 0 then
 		weaponInterval = weaponInterval - dt
 	end
-	if love.mouse.isDown("l") then
+	if love.mouse.isDown(1) then
 		if weaponInterval <= 0 then
 			local laser = Entity(player.position.x, player.position.y, "assets/laser1.png")
 			laser.orientation = player.orientation
@@ -141,7 +141,7 @@ function love.update(dt)
 end
 
 function love.mousepressed(x, y, button)
-	if button == "r" then
+	if button == 2 then
 		local bomb = Entity(player.position.x, player.position.y, "assets/bomb1.png")
 		local direction = vector(x, y) - player.position
 		bomb.orientation = math.atan2(direction.x, -direction.y)
@@ -173,6 +173,6 @@ function love.draw()
 	love.graphics.print("FPS: " .. love.timer.getFPS())
 
 	if instructions then
-		love.graphics.printf("WASD to move\nMouse to turn\nLeft Click to shoot lasers\nRight Click to throw a bomb\nESC to exit", 0, 15, love.window.getWidth(), "left", 0, 2)
+		love.graphics.printf("WASD to move\nMouse to turn\nLeft Click to shoot lasers\nRight Click to throw a bomb\nESC to exit", 0, 15, love.graphics.getWidth(), "left", 0, 2)
 	end
 end

@@ -43,7 +43,7 @@ function Entity:draw()
 end
 
 function Entity:isOutOfBounds()
-	return self.position.x < 0 or self.position.x > love.window.getWidth() or self.position.y < 0 or self.position.y > love.window.getHeight()
+	return self.position.x < 0 or self.position.x > love.graphics.getWidth() or self.position.y < 0 or self.position.y > love.graphics.getHeight()
 end
 
 return Entity
